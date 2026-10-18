@@ -35,7 +35,7 @@ public class FareCalculator {
      */
     public Money fare(PricingPolicy policy, Duration tripLength) {
 
-        // Round up to the next whole minute
+        // Round up to the next whole minute(ex. 61 seconds = counts as 2 mins)
         long minutes = (tripLength.getSeconds() + 59) / 60;
 
         // Calculate the unlock fee plus the per-minute charge
