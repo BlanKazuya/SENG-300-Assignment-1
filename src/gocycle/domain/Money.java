@@ -29,6 +29,10 @@ public record Money(BigDecimal amount) {
         return new Money(amount.multiply(BigDecimal.valueOf(n)));
     }
 
-
+    // Sets value to have 2 digits after decimal and round up or down by .5
+    @Override
+    public String toString() {
+        return "$" + amount.setScale(2, RoundingMode.HALF_UP);
+    }
 
 } // END OF THE CLASS
