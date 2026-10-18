@@ -36,7 +36,16 @@ public class VehicleTest {
             System.out.println("ERROR: Battery level above 100 was accepted.");
 }       catch (IllegalArgumentException e) {
             System.out.println("Battery above 100 correctly rejected.");
+
 }
+
+        // Test electric scooter availability at different battery levels.
+ElectricScooter lowBatteryScooter = new ElectricScooter("SCOOTER001", 15);
+ElectricScooter chargedScooter = new ElectricScooter("SCOOTER002", 75);
+
+System.out.println("Scooter at 15%: " + lowBatteryScooter.isAvailable());
+System.out.println("Scooter at 75%: " + chargedScooter.isAvailable());
+
     }
 }
 
