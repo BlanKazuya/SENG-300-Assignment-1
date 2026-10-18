@@ -29,7 +29,7 @@ public class FareCalculator {
     }
 
     /**
-     * @param policy What type of Rider is it? (Casual, Member, or Student)
+     * @param policy What type of Rider is it? (CasualPricing, MemberPricing, or StudentPricing)
      * @param tripLength How long is the trip in minutes?
      * @return total price for the trip depending on your role
      */
