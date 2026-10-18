@@ -1,0 +1,9 @@
+# Ignore compiled Java files
+*.class
+
+# Ignore generated build directories
+build/
+out/
+
+# Ignore local VS Code settings
+.vscode/
