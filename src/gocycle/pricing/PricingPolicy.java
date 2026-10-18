@@ -9,6 +9,8 @@ import gocycle.domain.Money;
  */
 
 public interface PricingPolicy {
-
+    String name();
+    Money unlockFee();
+    Money perMinute();
 }
 
