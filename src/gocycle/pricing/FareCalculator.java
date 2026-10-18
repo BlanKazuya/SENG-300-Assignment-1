@@ -24,9 +24,7 @@ public class FareCalculator {
     // Creates a standard calculator:
     // Trips longer than 2 hours receive a $5 surcharge
     public static FareCalculator standard() {
-        return new FareCalculator(
-                Duration.ofHours(2),
-                Money.of("5.00")
+        return new FareCalculator(Duration.ofHours(2), Money.of("5.00")
         );
     }
 
