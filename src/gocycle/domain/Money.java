@@ -24,6 +24,11 @@ public record Money(BigDecimal amount) {
         return new Money(amount.add(other.amount));
     }
 
+    // Multiplies your value by certain time. We are using minutes as our multiplier
+    public Money times(long n) {
+        return new Money(amount.multiply(BigDecimal.valueOf(n)));
+    }
+
 
 
 } // END OF THE CLASS
