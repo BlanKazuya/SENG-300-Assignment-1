@@ -32,4 +32,39 @@ public abstract class Vehicle {
     public boolean isAvailable() {
         return availabilityStatus && !maintenanceStatus;
     }
+
+    /**
+     * Marks the vehicle as requiring maintenance.
+     * A vehicle needing repairs cannot be rented.
+     */
+    public void reportFault() {
+        maintenanceStatus = true;
+    }
+
+    /**
+     * Marks the vehicle as repaired and ready for service.
+     * Does not automatically change its rental availability status.
+     */
+    public void completeMaintenance() {
+        maintenanceStatus = false;
+    }
+
+    /**
+     * Updates whether the vehicle is available for rental.
+     *
+     * @param available true to make the vehicle available,
+     *                  false to make it unavailable
+     */
+    public void setAvailability(boolean available) {
+        availabilityStatus = available;
+    }
+
+    /**
+     * Checks whether the vehicle currently requires maintenance.
+     *
+     * @return true if maintenance is required, false otherwise
+     */
+    public boolean needsMaintenance() {
+        return maintenanceStatus;
+    }
 }

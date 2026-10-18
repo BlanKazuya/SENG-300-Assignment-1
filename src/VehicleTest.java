@@ -46,6 +46,34 @@ ElectricScooter chargedScooter = new ElectricScooter("SCOOTER002", 75);
 System.out.println("Scooter at 15%: " + lowBatteryScooter.isAvailable());
 System.out.println("Scooter at 75%: " + chargedScooter.isAvailable());
 
+  
+    // Test that reporting a fault prevents a pedal bike from being rented.
+PedalBike maintenanceBike = new PedalBike("BIKE002");
+
+maintenanceBike.reportFault();
+System.out.println("Bike after fault: " + maintenanceBike.isAvailable());
+System.out.println("Needs maintenance: " + maintenanceBike.needsMaintenance());
+
+// Test that a repaired bike becomes available again.
+maintenanceBike.completeMaintenance();
+System.out.println("Bike after repair: " + maintenanceBike.isAvailable());
+
+// Test that manually disabling a vehicle prevents rental.
+maintenanceBike.setAvailability(false);
+System.out.println("Bike disabled: " + maintenanceBike.isAvailable());
+
+// Test that a low-battery electric bike remains unavailable after repairs.
+ElectricBike maintenanceElectricBike = new ElectricBike("EBIKE006", 15);
+
+maintenanceElectricBike.reportFault();
+maintenanceElectricBike.completeMaintenance();
+
+System.out.println("Low battery after repair: "
+        + maintenanceElectricBike.isAvailable());
+
+
+
+
     }
 }
 
