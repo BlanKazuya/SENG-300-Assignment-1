@@ -1,8 +1,14 @@
 package gocycle.notifier;
 
 public class ReportNotifier implements Notifier{
+
+    /**
+     * Sends formatted report message to crew.
+     * @param report Report message.
+     * @param crewID The crew ID.
+     */
     @Override
-    public String send(String message, String recepient) {
-        return "";
+    public void send(String report, String crewID) {
+        System.out.println(report);
     }
 }
