@@ -5,10 +5,34 @@ public class Station {
     private int maxDockingPoints;
     private DockingPoint[] list;
 
+    /**
+     * Creates station with all free docking points.
+     * @param id Station id.
+     * @param maxDockingPoints Number of docking points at station.
+     */
     public Station(String id, int maxDockingPoints){
         this.id = id;
         this.maxDockingPoints = maxDockingPoints;
         this.list = new DockingPoint[maxDockingPoints];
+        for (int i=0; i < maxDockingPoints; i++){
+            list[i] = new DockingPoint();
+        }
+    }
+
+    /**
+     * Creates station with already used docking points.
+     * @param id Station id.
+     * @param maxDockingPoints Number of docking points at station.
+     * @param usedDockingPoints Number of docking points currently used.
+     */
+    public Station(String id, int maxDockingPoints, int usedDockingPoints){
+        this.id = id;
+        this.maxDockingPoints = maxDockingPoints;
+        this.list = new DockingPoint[maxDockingPoints];
+        for (int i=0; i < maxDockingPoints; i++){
+            if (i<usedDockingPoints){list[i] = new DockingPoint(false);}
+            else {list[i] = new DockingPoint();}
+        }
     }
 
     /**
