@@ -3,7 +3,7 @@ package gocycle.notifier;
 public class EmailNotifier implements Notifier{
 
     //represents email client
-    EmailClient client;
+    EmailClient client = new EmailClient();
 
     /**
      * Uses email client to send receipt to rider via email.
