@@ -1,3 +1,5 @@
+package gocycle.vehicle;
+
 /**
  * Represents an electric vehicle in the GoCycle system.
  * Extends the standard vehicle availability rules by

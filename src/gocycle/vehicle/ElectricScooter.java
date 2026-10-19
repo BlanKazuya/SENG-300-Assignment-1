@@ -1,3 +1,6 @@
+
+package gocycle.vehicle;
+
 /**
  * Represents an electric scooter in the GoCycle rental system.
  * Inherits battery management and availability checks

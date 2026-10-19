@@ -1,3 +1,6 @@
+package gocycle.vehicle;
+
+
 /**
  * Represents a vehicle in the GoCycle rental system.
  * Stores information shared by all vehicle types,

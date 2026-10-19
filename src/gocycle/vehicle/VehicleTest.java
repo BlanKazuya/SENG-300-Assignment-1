@@ -1,3 +1,6 @@
+
+package gocycle.vehicle;
+
 /**
  * Tests the basic functionality of the GoCycle vehicle classes.
  */

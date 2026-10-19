@@ -1,3 +1,5 @@
+package gocycle.vehicle;
+
 /**
  * Represents a regular pedal bike in the GoCycle system.
  * Inherits the common vehicle properties and availability

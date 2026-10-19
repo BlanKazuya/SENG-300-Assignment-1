@@ -1,3 +1,5 @@
+package gocycle.vehicle;
+
 /**
  * Represents an electric bike in the GoCycle rental system.
  * Inherits battery management and rental availability
