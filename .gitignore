@@ -1,9 +1,34 @@
-# Ignore compiled Java files
+# Java compiled files
 *.class
 
-# Ignore generated build directories
+# Java build directories
 build/
 out/
 
-# Ignore local VS Code settings
+# IntelliJ IDEA
+.idea/
+*.iml
+.kotlin
+
+# Eclipse
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache/
+bin/
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# VS Code
 .vscode/
+
+# macOS
+.DS_Store
