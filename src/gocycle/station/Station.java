@@ -56,6 +56,21 @@ public class Station {
     }
 
     /**
+     * Switches an unavailable DockingPoint to available.
+     */
+    public void pull(){
+        if (!isEmpty()){
+            for (int i=0; i < maxDockingPoints; i++){
+                if (!list[i].isAvailable()){
+                    list[i].setAvailabilityStatus(true);
+                    return;
+                }
+            }
+        }
+        System.out.println("Station is empty, no vehicle to borrow.");
+    }
+
+    /**
      * Switches an available DockingPoint to unavailable.
      */
     public void park(){
@@ -77,4 +92,10 @@ public class Station {
     public boolean isFull(){
         return (getAvailableDockingPoints()==0);
     }
+
+    /**
+     * Checks if a station is empty.
+     * @return True if station is empty, False otherwise.
+     */
+    public boolean isEmpty() {return (getAvailableDockingPoints()==maxDockingPoints);}
 }
