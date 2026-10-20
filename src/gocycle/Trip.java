@@ -1,20 +1,21 @@
 package gocycle;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import gocycle.station.*;
 
 public class Trip {
     private Rider rider;
-    private LocalTime startTime;
-    private LocalTime endTime;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
     private Station startStation;
     private Station endStation;
-    private LocalTime diffTime;
+    private LocalDateTime diffTime;
 
     public Trip(Rider rider, Station startStation) {
         this.rider = rider;
         this.startStation = startStation;
-        this.startTime = LocalTime.now();
+        this.startTime = LocalDateTime.now();
         this.diffTime = startTime.plusHours(2);
     }
 
@@ -23,9 +24,14 @@ public class Trip {
      * @return Trip time (minutes).
      */
     public int getTripTime(){
-        LocalTime timeNow = LocalTime.now();
-        LocalTime elapsedTime = timeNow.minusNanos(startTime.toNanoOfDay());
-        return ((elapsedTime.getHour()*60) + elapsedTime.getMinute());
+        LocalDateTime timeNow = LocalDateTime.now();
+        if (timeNow.getDayOfMonth()==startTime.getDayOfMonth()){
+            LocalTime elapsedTime = timeNow.toLocalTime().minusNanos(startTime.toLocalTime().toNanoOfDay());
+            return ((elapsedTime.getHour()*60) + elapsedTime.getMinute());
+        }
+        int elapsedHour = timeNow.getHour()+24-startTime.getHour();
+        int elapsedMin = timeNow.getMinute()-startTime.getMinute();
+        return ((elapsedHour*60) + elapsedMin);
     }
 
     public boolean tripIsEnded(){
@@ -38,7 +44,7 @@ public class Trip {
      * @return True if trip <=2 hours, False if trip >2 hours.
      */
     public boolean endTrip(Station endStation){
-        endTime = LocalTime.now();
+        endTime = LocalDateTime.now();
         this.endStation = endStation;
         return (!endTime.isAfter(diffTime));
     }
