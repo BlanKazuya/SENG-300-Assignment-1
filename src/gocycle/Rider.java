@@ -10,4 +10,16 @@ public class Rider {
         this.membership=membership;
         this.paymentInfo=paymentInfo;
     }
+
+    public String getId(){
+        return id;
+    }
+
+    public String getMembership(){
+        return membership;
+    }
+
+    public String getPaymentInfo(){
+        return paymentInfo;
+    }
 }

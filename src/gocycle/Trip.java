@@ -18,6 +18,16 @@ public class Trip {
         this.diffTime = startTime.plusHours(2);
     }
 
+    /**
+     * Returns trip time measured in minutes.
+     * @return Trip time (minutes).
+     */
+    public int getTripTime(){
+        LocalTime timeNow = LocalTime.now();
+        LocalTime elapsedTime = timeNow.minusNanos(startTime.toNanoOfDay());
+        return ((elapsedTime.getHour()*60) + elapsedTime.getMinute());
+    }
+
     public boolean tripIsEnded(){
         return (endTime!=null);
     }
