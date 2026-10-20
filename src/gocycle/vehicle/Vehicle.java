@@ -1,4 +1,6 @@
 package gocycle.vehicle;
+import gocycle.notifier.Notifier;
+import gocycle.notifier.InAppNotifier;
 
 
 /**
@@ -42,6 +44,13 @@ public abstract class Vehicle {
      */
     public void reportFault() {
         maintenanceStatus = true;
+
+        Notifier notifier = new InAppNotifier();
+
+        String message = "Vehicle " + id + " has reported a fault and requires maintenance.";
+
+        notifier.send("[Maintenance Crew] " + message, "Maintenance Crew");
+        notifier.send("[Control Room Operator] " + message, "Control Room Operator");
     }
 
     /**

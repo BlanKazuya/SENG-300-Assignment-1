@@ -76,6 +76,9 @@ System.out.println("Low battery after repair: "
 
 
 
+ElectricBike testBike = new ElectricBike("LOWBAT001", 80);
+testBike.setCurrentBattery(15);
+
 
     }
 }
