@@ -1,4 +1,6 @@
 package gocycle.vehicle;
+import gocycle.notifier.Notifier;
+import gocycle.notifier.InAppNotifier;
 
 /**
  * Represents an electric vehicle in the GoCycle system.
@@ -30,15 +32,34 @@ public abstract class ElectricVehicle extends Vehicle {
      *
      * @param currentBattery the new battery percentage
      */
-    public void setCurrentBattery(int currentBattery) {
-        if (currentBattery < 0 || currentBattery > 100) {
-            throw new IllegalArgumentException(
-                "Battery level must be between 0 and 100."
-            );
-        }
-
-        this.currentBattery = currentBattery;
+   public void setCurrentBattery(int currentBattery) {
+    if (currentBattery < 0 || currentBattery > 100) {
+        throw new IllegalArgumentException(
+            "Battery level must be between 0 and 100."
+        );
     }
+
+    boolean lowBatteryReported = this.currentBattery < 20;
+
+    this.currentBattery = currentBattery;
+
+    if (currentBattery < 20 && !lowBatteryReported) {
+        Notifier notifier = new InAppNotifier();
+
+        String message = "Vehicle " + getId()
+            + " has low battery (" + currentBattery + "%).";
+
+        notifier.send(
+            "[Maintenance Crew] " + message,
+            "Maintenance Crew"
+        );
+
+        notifier.send(
+            "[Control Room Operator] " + message,
+            "Control Room Operator"
+        );
+    }
+}
 
     /**
      * Checks both the standard vehicle requirements and
