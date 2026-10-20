@@ -34,6 +34,10 @@ public class Trip {
         return ((elapsedHour*60) + elapsedMin);
     }
 
+    /**
+     * Checks if a trip has ended.
+     * @return True if trip is ended, False if trip hasn't ended.
+     */
     public boolean tripIsEnded(){
         return (endTime!=null);
     }
