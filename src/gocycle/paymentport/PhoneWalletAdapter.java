@@ -4,15 +4,17 @@ package gocycle.paymentport;
  * represents the adapter to use a phone wallet payment system
  * implements the PaymentPort interface
  */
-class PhoneWalletAdapter implements PaymentPort {
+public class PhoneWalletAdapter implements PaymentPort {
 
-    public PhoneWalletClient client;
+    private final PaymentClient client;
+    private final PhoneWallet wallet;
 
     /**
      * creates the wrapper for the phone wallet
      */
-    public PhoneWallentAdapter(PhoneWalletClient client) {
+    public PhoneWalletAdapter(PaymentClient client, PhoneWallet Wallet) {
         this.client = client;
+        this.wallet = Wallet;
     }
 
     /**
@@ -21,7 +23,8 @@ class PhoneWalletAdapter implements PaymentPort {
      * @param amount float amount of dollars charged to the user
      * @return true if payment went through, false if payment failed
      */
+    @Override
     public boolean charge(String id, float amount) {
-        client.chargephone(amount);
+        return client.chargeCard(wallet,amount);
     }
 }

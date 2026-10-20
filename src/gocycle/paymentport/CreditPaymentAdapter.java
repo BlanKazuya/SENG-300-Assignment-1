@@ -4,15 +4,15 @@ package gocycle.paymentport;
  * Represents the adapter for using a credit card to pay
  * implements the PaymentPort interface
  */
-class CreditPaymentAdapter implements PaymentPort {
+public class CreditPaymentAdapter implements PaymentPort {
 
-    public CreditPaymentClient client;
-    private CreditCard creditCard;
+    private final PaymentClient client;
+    private final CreditCard creditCard;
 
     /**
      * Creates a wrapper for credit card payments
      */
-    public CreditPaymentAdapter(CreditPaymentClient client, CreditCard creditCard) {
+    public CreditPaymentAdapter(PaymentClient client, CreditCard creditCard) {
         this.client = client;
         this.creditCard = creditCard;
     }
@@ -22,7 +22,8 @@ class CreditPaymentAdapter implements PaymentPort {
      * @param amount float amount of dollars charged to the user
      * @return true if payment went through, false if payment failed
      */
+    @Override
     public boolean charge(String id, float amount) {
-        client.chargeCard(creditCard, amount);
+        return client.chargeCard(creditCard, amount);
     }
 }
