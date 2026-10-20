@@ -7,6 +7,6 @@ interface PaymentPort {
      * Charges the user through a third party client
      * @return true if payment went through, false if payment failed
      */
-    public boolean charge();
+    boolean charge(String id, float amount);
 
 }
